@@ -1,0 +1,2214 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Roadmap Completo — Análise de Dados 2025–2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #04070f;
+    --surface: #090e1c;
+    --surface2: #0e1628;
+    --border: #162038;
+    --border2: #1e2d4a;
+    --accent1: #00e5b0;
+    --accent2: #7c6fff;
+    --accent3: #ff5f5f;
+    --accent4: #ffc832;
+    --accent5: #3dd6cc;
+    --accent6: #ff8c3a;
+    --accent7: #a78bfa;
+    --accent8: #fb7db5;
+    --accent9: #22d3a8;
+    --text: #dde3f0;
+    --text2: #a0aec0;
+    --muted: #536080;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ─── BACKGROUND ─── */
+  .bg-layer {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .bg-glow {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0.07;
+  }
+
+  .bg-glow-1 { width: 700px; height: 500px; background: var(--accent2); top: -100px; left: -200px; }
+  .bg-glow-2 { width: 600px; height: 400px; background: var(--accent1); bottom: 10%; right: -150px; }
+  .bg-glow-3 { width: 400px; height: 400px; background: var(--accent3); top: 40%; left: 30%; opacity: 0.04; }
+
+  .grid-bg {
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(22,32,56,0.5) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(22,32,56,0.5) 1px, transparent 1px);
+    background-size: 44px 44px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ─── LAYOUT ─── */
+  .wrapper {
+    position: relative;
+    z-index: 1;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 48px 28px 100px;
+  }
+
+  /* ─── HEADER ─── */
+  header {
+    text-align: center;
+    margin-bottom: 80px;
+    animation: fadeDown 0.9s ease both;
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(0,229,176,0.07);
+    border: 1px solid rgba(0,229,176,0.18);
+    padding: 6px 18px;
+    border-radius: 100px;
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    color: var(--accent1);
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+
+  .badge-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent1);
+    box-shadow: 0 0 8px var(--accent1);
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2.6rem, 6.5vw, 5.2rem);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -3px;
+    background: linear-gradient(135deg, #fff 0%, var(--accent1) 45%, var(--accent2) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 18px;
+  }
+
+  .subtitle {
+    font-size: 1.05rem;
+    color: var(--muted);
+    font-weight: 300;
+    letter-spacing: 0.3px;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  .header-stats {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    margin-top: 32px;
+    flex-wrap: wrap;
+  }
+
+  .stat {
+    text-align: center;
+  }
+
+  .stat-val {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--accent1);
+  }
+
+  .stat-label {
+    font-size: 10px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-family: 'Space Mono', monospace;
+    margin-top: 2px;
+  }
+
+  /* ─── PATH BAR ─── */
+  .path-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0;
+    margin-bottom: 56px;
+    animation: fadeUp 1s ease 0.2s both;
+  }
+
+  .path-step { display: flex; align-items: center; }
+
+  .path-node {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 8px 18px;
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    transition: all 0.3s;
+    cursor: default;
+  }
+
+  .path-node:hover { color: var(--accent1); border-color: rgba(0,229,176,0.4); }
+
+  .path-arrow { font-size: 11px; color: var(--border2); padding: 0 3px; }
+
+  /* ─── LEGEND ─── */
+  .legend {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 56px;
+    padding: 14px 20px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    animation: fadeUp 0.8s ease 0.1s both;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  /* ─── SECTION ─── */
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+
+  .section-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 2px;
+    min-width: 28px;
+  }
+
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.45rem;
+    font-weight: 700;
+    letter-spacing: -0.4px;
+  }
+
+  .section-line { flex: 1; height: 1px; background: var(--border); }
+
+  /* ─── PHASE ─── */
+  .phase {
+    margin-bottom: 60px;
+    animation: fadeUp 0.7s ease both;
+  }
+
+  /* ─── CARD GRID ─── */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 14px;
+  }
+
+  .card-grid.wide {
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  }
+
+  /* ─── CARD ─── */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 22px 24px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+    cursor: default;
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--card-accent, var(--accent1));
+    opacity: 0;
+    transition: opacity 0.25s;
+  }
+
+  .card:hover {
+    transform: translateY(-3px);
+    border-color: color-mix(in srgb, var(--card-accent, var(--accent1)) 40%, transparent);
+    box-shadow: 0 8px 36px rgba(0,0,0,0.45);
+  }
+
+  .card:hover::before { opacity: 1; }
+
+  .card-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+
+  .card-icon {
+    font-size: 1.6rem;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  .card-title-block { flex: 1; }
+
+  .card-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.98rem;
+    font-weight: 700;
+    color: var(--card-accent, var(--accent1));
+    letter-spacing: -0.2px;
+    line-height: 1.3;
+    margin-bottom: 4px;
+  }
+
+  .card-desc {
+    font-size: 11.5px;
+    color: var(--muted);
+    line-height: 1.5;
+    font-weight: 300;
+  }
+
+  /* ─── TAGS ─── */
+  .tag-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+
+  .tag {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.07);
+    padding: 3px 10px;
+    font-size: 11px;
+    color: #a8b4cc;
+    border-radius: 2px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    transition: all 0.2s;
+  }
+
+  .tag:hover { background: rgba(255,255,255,0.08); color: #fff; }
+
+  .tag.hot {
+    background: rgba(255,95,95,0.1);
+    border-color: rgba(255,95,95,0.22);
+    color: #ff8e8e;
+  }
+
+  .tag.new {
+    background: rgba(0,229,176,0.09);
+    border-color: rgba(0,229,176,0.22);
+    color: var(--accent1);
+  }
+
+  .tag.ai {
+    background: rgba(124,111,255,0.1);
+    border-color: rgba(124,111,255,0.22);
+    color: #b3aaff;
+  }
+
+  .tag.core {
+    background: rgba(255,200,50,0.08);
+    border-color: rgba(255,200,50,0.2);
+    color: #ffd066;
+  }
+
+  /* ─── BIG CARD ─── */
+  .big-card {
+    grid-column: 1 / -1;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 32px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .big-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent2), var(--accent1), var(--accent5));
+  }
+
+  /* ─── HIGHLIGHT BOX ─── */
+  .highlight-box {
+    background: rgba(0,229,176,0.04);
+    border: 1px solid rgba(0,229,176,0.12);
+    border-radius: 2px;
+    padding: 18px 22px;
+    margin-bottom: 14px;
+    grid-column: 1 / -1;
+  }
+
+  .highlight-box p {
+    font-size: 0.875rem;
+    color: #7a94b0;
+    line-height: 1.75;
+    font-weight: 300;
+  }
+
+  .highlight-box strong { color: var(--accent1); font-weight: 500; }
+
+  .highlight-box .hl-tip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    color: var(--accent4);
+    background: rgba(255,200,50,0.07);
+    border: 1px solid rgba(255,200,50,0.15);
+    padding: 3px 10px;
+    margin-top: 8px;
+  }
+
+  /* ─── ROADMAP ─── */
+  .roadmap { display: flex; flex-direction: column; }
+
+  .roadmap-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 22px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .roadmap-step:last-child { border-bottom: none; }
+
+  .step-dot {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 2px;
+    letter-spacing: 0.5px;
+  }
+
+  .step-content { flex: 1; }
+
+  .step-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.98rem;
+    margin-bottom: 6px;
+  }
+
+  .step-desc {
+    font-size: 0.875rem;
+    color: var(--muted);
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  .step-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 10px;
+  }
+
+  .step-skill {
+    font-size: 10.5px;
+    font-family: 'Space Mono', monospace;
+    color: var(--muted);
+    background: var(--surface2);
+    border: 1px solid var(--border2);
+    padding: 2px 8px;
+    letter-spacing: 0.3px;
+  }
+
+  /* ─── PHASE CONNECTOR ─── */
+  .phase-connector {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 4px 0 32px;
+    gap: 12px;
+    color: var(--muted);
+    font-size: 10px;
+    font-family: 'Space Mono', monospace;
+    letter-spacing: 1.5px;
+  }
+
+  .phase-connector::before, .phase-connector::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+    max-width: 180px;
+  }
+
+  /* ─── TOOL ROW ─── */
+  .tool-section { margin-bottom: 24px; }
+  .tool-section:last-child { margin-bottom: 0; }
+
+  .tool-section-label {
+    font-size: 9.5px;
+    color: var(--muted);
+    margin-bottom: 10px;
+    font-family: 'Space Mono', monospace;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 6px;
+  }
+
+  .tool-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+  }
+
+  .tool-pill {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    padding: 5px 13px 5px 9px;
+    font-size: 11.5px;
+    color: var(--text2);
+    border-radius: 2px;
+    font-family: 'Space Mono', monospace;
+    letter-spacing: 0.3px;
+    transition: all 0.2s;
+  }
+
+  .tool-pill:hover { border-color: var(--accent2); color: #c0b8ff; }
+  .tool-pill .dot { width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; }
+
+  /* ─── SALARY ─── */
+  .salary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 14px;
+  }
+
+  .salary-card {
+    background: rgba(124,111,255,0.07);
+    border: 1px solid rgba(124,111,255,0.18);
+    border-radius: 2px;
+    padding: 20px;
+    transition: all 0.25s;
+  }
+
+  .salary-card:hover {
+    background: rgba(124,111,255,0.12);
+    border-color: rgba(124,111,255,0.35);
+    transform: translateY(-2px);
+  }
+
+  .salary-role { font-size: 9.5px; color: var(--muted); margin-bottom: 6px; font-family: 'Space Mono', monospace; letter-spacing: 1px; }
+  .salary-value { font-family: 'Syne', sans-serif; font-size: 1.6rem; font-weight: 800; color: var(--accent7); line-height: 1; }
+  .salary-unit { font-size: 11px; color: var(--muted); margin-top: 5px; }
+  .salary-intl { font-size: 11px; color: var(--accent1); margin-top: 4px; font-family: 'Space Mono', monospace; }
+
+  /* ─── COLORS ─── */
+  .c1 { --card-accent: #00e5b0; }
+  .c2 { --card-accent: #7c6fff; }
+  .c3 { --card-accent: #ff5f5f; }
+  .c4 { --card-accent: #ffc832; }
+  .c5 { --card-accent: #3dd6cc; }
+  .c6 { --card-accent: #ff8c3a; }
+  .c7 { --card-accent: #a78bfa; }
+  .c8 { --card-accent: #fb7db5; }
+  .c9 { --card-accent: #22d3a8; }
+  .c10 { --card-accent: #38bdf8; }
+
+  /* ─── DIVIDER ─── */
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border), transparent);
+    margin: 0 0 56px;
+  }
+
+  /* ─── ALERT / NEW SECTION ─── */
+  .alert-box {
+    grid-column: 1/-1;
+    background: rgba(124,111,255,0.06);
+    border: 1px solid rgba(124,111,255,0.18);
+    border-left: 3px solid var(--accent2);
+    padding: 14px 18px;
+    font-size: 0.85rem;
+    color: #8a97b8;
+    line-height: 1.65;
+  }
+
+  .alert-box strong { color: var(--accent7); font-weight: 500; }
+
+  /* ─── FOOTER ─── */
+  footer {
+    text-align: center;
+    padding: 40px 0 0;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 11px;
+    font-family: 'Space Mono', monospace;
+    letter-spacing: 0.8px;
+  }
+
+  footer span { color: var(--accent1); }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .phase:nth-child(1) { animation-delay: 0.05s; }
+  .phase:nth-child(2) { animation-delay: 0.1s; }
+  .phase:nth-child(3) { animation-delay: 0.15s; }
+  .phase:nth-child(4) { animation-delay: 0.2s; }
+  .phase:nth-child(5) { animation-delay: 0.25s; }
+  .phase:nth-child(6) { animation-delay: 0.3s; }
+  .phase:nth-child(7) { animation-delay: 0.35s; }
+  .phase:nth-child(8) { animation-delay: 0.4s; }
+  .phase:nth-child(9) { animation-delay: 0.45s; }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 640px) {
+    .card-grid { grid-template-columns: 1fr; }
+    .path-bar { display: none; }
+    h1 { letter-spacing: -1.5px; }
+    .header-stats { gap: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="bg-layer">
+  <div class="bg-glow bg-glow-1"></div>
+  <div class="bg-glow bg-glow-2"></div>
+  <div class="bg-glow bg-glow-3"></div>
+</div>
+<div class="grid-bg"></div>
+
+<div class="wrapper">
+
+  <!-- HEADER -->
+  <header>
+    <div class="badge"><span class="badge-dot"></span>Roadmap Atualizado · 2025–2026</div>
+    <h1>Análise de Dados</h1>
+    <p class="subtitle">Do zero ao profissional sênior — todas as tecnologias, ferramentas e caminhos que realmente importam hoje</p>
+    <div class="header-stats">
+      <div class="stat"><div class="stat-val">9</div><div class="stat-label">Fases</div></div>
+      <div class="stat"><div class="stat-val">50+</div><div class="stat-label">Ferramentas</div></div>
+      <div class="stat"><div class="stat-val">200+</div><div class="stat-label">Conceitos</div></div>
+      <div class="stat"><div class="stat-val">6</div><div class="stat-label">Trilhas de carreira</div></div>
+    </div>
+  </header>
+
+  <!-- PATH BAR -->
+  <div class="path-bar">
+    <div class="path-step"><div class="path-node">Fundamentos</div><span class="path-arrow">→</span></div>
+    <div class="path-step"><div class="path-node">Programação</div><span class="path-arrow">→</span></div>
+    <div class="path-step"><div class="path-node">Dados</div><span class="path-arrow">→</span></div>
+    <div class="path-step"><div class="path-node">Estatística</div><span class="path-arrow">→</span></div>
+    <div class="path-step"><div class="path-node">ML & IA</div><span class="path-arrow">→</span></div>
+    <div class="path-step"><div class="path-node">BI & Viz</div><span class="path-arrow">→</span></div>
+    <div class="path-step"><div class="path-node">Cloud</div><span class="path-arrow">→</span></div>
+    <div class="path-step"><div class="path-node">Soft Skills</div><span class="path-arrow">→</span></div>
+    <div class="path-step"><div class="path-node">Especialização</div></div>
+  </div>
+
+  <!-- LEGEND -->
+  <div class="legend">
+    <div class="legend-item"><span class="tag hot" style="margin:0;padding:2px 8px;font-size:10px">HOT</span> Muito demandado no mercado</div>
+    <div class="legend-item"><span class="tag new" style="margin:0;padding:2px 8px;font-size:10px">NEW</span> Tendência emergente em 2025</div>
+    <div class="legend-item"><span class="tag ai" style="margin:0;padding:2px 8px;font-size:10px">AI</span> Relacionado a IA / LLMs</div>
+    <div class="legend-item"><span class="tag core" style="margin:0;padding:2px 8px;font-size:10px">CORE</span> Fundamento essencial</div>
+    <div class="legend-item" style="margin-left:auto;font-size:11px;color:#3d4f6a">💡 Passe o mouse sobre os cards para destacar</div>
+  </div>
+
+  <!-- ══════════════════════ FASE 1 ══════════════════════ -->
+  <div class="phase">
+    <div class="section-label">
+      <span class="section-num">01</span>
+      <h2 class="section-title" style="color:#00e5b0">Fundamentos Matemáticos & Lógicos</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="card-grid">
+
+      <div class="highlight-box">
+        <p>A base de tudo. Sem isso, você consegue usar ferramentas mas nunca entenderá <strong>por que elas funcionam</strong> — e não saberá o que fazer quando quebrarem. Invista aqui com calma antes de correr para Python ou SQL. Esta fase é ignorada por muitos iniciantes e é exatamente o que diferencia analistas mediocres dos excepcionais.</p>
+        <div><span class="hl-tip">⏱ Tempo estimado: 4–6 semanas de estudo sólido</span></div>
+      </div>
+
+      <div class="card c1">
+        <div class="card-header">
+          <span class="card-icon">📐</span>
+          <div class="card-title-block">
+            <div class="card-title">Álgebra Linear</div>
+            <div class="card-desc">Fundamento de ML, redes neurais e compressão de dados</div>
+          </div>
+        </div>
+        <div class="tag-cloud">
+          <span class="tag core">Vetores e matrizes</span>
+          <span class="tag">Produto escalar e matricial</span>
+          <span class="tag">Autovalores e autovetores</span>
+          <span class="tag">Transformações lineares</span>
+          <span class="tag">Decomposição SVD</span>
+          <span class="tag">Normas (L1, L2)</span>
+          <span class="tag">Espaços vetoriais</span>
+          <span class="tag">Rank de matrizes</span>
+        </div>
+      </div>
+
+      <div class="card c1">
+        <div class="card-header">
+          <span class="card-icon">📈</span>
+          <div class="card-title-block">
+            <div class="card-title">Cálculo & Otimização</div>
+            <div class="card-desc">Essencial para entender como modelos aprendem (gradient descent)</div>
+          </div>
+        </div>
+        <div class="tag-cloud">
+          <span class="tag core">Derivadas e regra da cadeia</span>
+          <span class="tag core">Gradiente e Hessiana</span>
+          <span class="tag">Derivadas parciais</span>
+          <span class="tag">Otimização convexa</span>
+          <span class="tag">Mínimos locais vs. globais</span>
+          <span class="tag">Integrais (conceito)</span>
+          <span class="tag">Função de perda</span>
+        </div>
+      </div>
+
+      <div class="card c1">
+        <div class="card-header">
+          <span class="card-icon">🎲</span>
+          <div class="card-title-block">
+            <div class="card-title">Probabilidade</div>
+            <div class="card-desc">Base para estatística, ML bayesiano e tomada de decisão sob incerteza</div>
+          </div>
+        </div>
+        <div class="tag-cloud">
+          <span class="tag core">Espaço amostral e eventos</span>
+          <span class="tag core">Probabilidade condicional</span>
+          <span class="tag core">Teorema de Bayes</span>
+          <span class="tag">Variáveis aleatórias</span>
+          <span class="tag">Esperança e variância</span>
+          <span class="tag">Covariância</span>
+          <span class="tag">Lei dos grandes números</span>
+          <span class="tag">Teorema Central do Limite</span>
+          <span class="tag">Distribuições discretas</span>
+          <span class="tag">Distribuições contínuas</span>
+        </div>
+      </div>
+
+      <div class="card c1">
+        <div class="card-header">
+          <span class="card-icon">🔢</span>
+          <div class="card-title-block">
+            <div class="card-title">Lógica & Pensamento Computacional</div>
+            <div class="card-desc">Como pensar como uma máquina — e como um analista</div>
+          </div>
+        </div>
+        <div class="tag-cloud">
+          <span class="tag">Lógica proposicional</span>
+          <span class="tag">Teoria dos conjuntos</span>
+          <span class="tag">Funções e relações</span>
+          <span class="tag">Raciocínio dedutivo</span>
+          <span class="tag">Raciocínio indutivo</span>
+          <span class="tag">Estruturas de dados básicas</span>
+          <span class="tag">Complexidade (Big-O)</span>
+          <span class="tag">Pensamento crítico</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="phase-connector">▼ PRÓXIMA FASE</div>
+
+  <!-- ══════════════════════ FASE 2 ══════════════════════ -->
+  <div class="phase">
+    <div class="section-label">
+      <span class="section-num">02</span>
+      <h2 class="section-title" style="color:#7c6fff">Programação para Dados</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="card-grid">
+
+      <div class="card c2">
+        <div class="card-header">
+          <span class="card-icon">🐍</span>
+          <div class="card-title-block">
+            <div class="card-title">Python <span class="tag hot" style="display:inline;font-size:9px">HOT</span> <span class="tag core" style="display:inline;font-size:9px">CORE</span></div>
+            <div class="card-desc">A linguagem número 1 em dados. Aprenda bem desde o início</div>
+          </div>
+        </div>
+        <div class="tag-cloud">
+          <span class="tag core">Sintaxe e tipos de dados</span>
+          <span class="tag core">Estruturas: list, dict, set, tuple</span>
+          <span class="tag core">Funções e lambdas</span>
+          <span class="tag">OOP (classes e herança)</span>
+          <span class="tag">List / dict comprehensions</span>
+          <span class="tag">Generators e iteradores</span>
+          <span class="tag">Decorators</span>
+          <span class="tag">Context managers (with)</span>
+          <span class="tag">Tratamento de exceções</span>
+          <span class="tag">Type hints (PEP 484)</span>
+          <span class="tag">Manipulação de arquivos</span>
+          <span class="tag">Módulos e packages</span>
+          <span class="tag">uv / Poetry (gestão de deps)</span>
+          <span class="tag">pytest</span>
+          <span class="tag new">Ruff (linting moderno)</span>
+        </div>
+      </div>
+
+      <div class="card c2">
+        <div class="card-header">
+          <span class="card-icon">🗃️</span>
+          <div class="card-title-block">
+            <div class="card-title">SQL <span class="tag hot" style="display:inline;font-size:9px">HOT</span> <span class="tag core" style="display:inline;font-size:9px">CORE</span></div>
+            <div class="card-desc">Ainda a habilidade mais cobrada em vagas de dados no Brasil</div>
+          </div>
+        </div>
+        <div class="tag-cloud">
+          <span class="tag core">SELECT, WHERE, GROUP BY, HAVING</span>
+          <span class="tag core">JOINs (inner, left, right, full, cross)</span>
+          <span class="tag core">Subqueries e CTEs (WITH)</span>
+          <span class="tag hot">Window Functions</span>
+          <span class="tag">RANK, DENSE_RANK, ROW_NUMBER</span>
+          <span class="tag">LAG, LEAD, NTILE</span>
+          <span class="tag">Aggregations avançadas</span>
+          <span class="tag">Índices e EXPLAIN ANALYZE</span>
+          <span class="tag">DDL (CREATE, ALTER, DROP)</span>
+          <span class="tag">Transações e ACID</span>
+          <span class="tag">Stored Procedures e Views</span>
+          <span class="tag new">Analytic Functions no BigQuery</span>
+          <span class="tag">PIVOT / UNPIVOT</span>
+        </div>
+      </div>
+
+      <div class="card c2">
+        <div class="card-header">
+          <span class="card-icon">📦</span>
+          <div class="card-title-block">
+            <div class="card-title">Bibliotecas Python Core</div>
+            <div class="card-desc">O arsenal básico de qualquer profissional de dados</div>
+          </div>
+        </div>
+        <div class="tag-cloud">
+          <span class="tag hot">Pandas (DataFrames)</span>
+          <span class="tag hot">NumPy (arrays numéricos)</span>
+          <span class="tag new">Polars (alternativa ultra-rápida ao Pandas)</span>
+          <span class="tag">Scipy (computação científica)</span>
+          <span class="tag">Statsmodels (modelos estatísticos)</span>
+          <span class="tag">Matplotlib (gráficos base)</span>
+          <span class="tag">Seaborn (gráficos estatísticos)</span>
+          <span class="tag">Plotly (gráficos interativos)</span>
+          <span class="tag">Openpyxl (Excel)</span>
+          <span class="tag new">PyArrow (formato columnar)</span>
+          <span class="tag new">DuckDB (SQL local rápido)</span>
+        </div>
+      </div>
+
+      <div class="card c2">
+        <div class="card-header">
+          <span class="card-icon">💻</span>
+          <div class="card-title-block">
+            <div class="card-title">Ambiente & Ferramentas Dev</div>
+            <div class="card-desc">Configurar bem o ambiente economiza horas de dor de cabeça</div>
+          </div>
+        </div>
+        <div class="tag-cloud">
+          <span class="tag core">Jupyter Notebook / JupyterLab</span>
+          <span class="tag core">VS Code + extensões Python</span>
+          <span class="tag core">Git e GitHub (versionamento)</span>
+          <span class="tag core">Terminal / Bash básico</span>
+          <span class="tag hot">Google Colab</span>
+          <span class="tag">Docker (conceito e uso básico)</span>
+          <span class="tag new">uv (gerenciador de pacotes rápido)</span>
+          <span class="tag new">Marimo (notebooks reativos)</span>
+          <span class="tag">Conda / pip</span>
+          <span class="tag">Make / Makefile</span>
+        </div>
+      </div>
+
+      <div class="card c2">
+        <div class="card-header">
+          <span class="card-icon">⚙️</span>
+          <div class="card-title-block">
+            <div class="card-title">R — Opcional mas Valioso</div>
+            <div class="card-desc">Preferido em pesquisa acadêmica, bioestatística e experimentos avançados</div>
+          </div>
+        </div>
+        <div class="tag-cloud">
+          <span class="tag">ggplot2 (visualizações elegantes)</span>
+          <span class="tag">dplyr (manipulação de dados)</span>
+          <span class="tag">tidyr (dados arrumados)</span>
+          <span class="tag">tidyverse (ecosistema completo)</span>
+          <span class="tag">R Markdown / Quarto</span>
+          <span class="tag">Shiny (dashboards)</span>
+          <span class="tag">caret / tidymodels</span>
+        </div>
+      </div>
+
+      <div class="card c2">
+        <div class="card-header">
+          <span class="card-icon">🕸️</span>
+          <div class="card-title-block">
+            <div class="card-title">Web Scraping & APIs</div>
+            <div class="card-desc">Saber coletar dados de qualquer fonte é um superpoder real</div>
+          </div>
+        </div>
+        <div class="tag-cloud">
+          <span class="tag">Requests (HTTP)</span>
+          <span class="tag">BeautifulSoup (HTML parsing)</span>
+          <span class="tag">Selenium (automação de browser)</span>
+          <span class="tag new">Playwright (scraping moderno)</span>
+          <span class="tag">Scrapy (framework de scraping)</span>
+          <span class="tag">APIs REST (GET, POST, auth)</span>
+          <span class="tag">JSON e XML</span>
+          <span class="tag">OAuth 2.0</span>
+          <span class="tag">Rate limiting e robots.txt</span>
+          <span class="tag new">httpx (HTTP assíncrono)</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="phase-connector">▼ PRÓXIMA FASE</div>
+
+  <!-- ══════════════════════ FASE 3 ══════════════════════ -->
+  <div class="phase">
+    <div class="section-label">
+      <span class="section-num">03</span>
+      <h2 class="section-title" style="color:#ff5f5f">Dados: Coleta, Qualidade & Engenharia</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="card-grid">
+
+      <div class="card c3">
+        <div class="card-header">
+          <span class="card-icon">🧹</span>
+          <div class="card-title-block">
+            <div class="card-title">Qualidade & Limpeza de Dados <span class="tag hot" style="display:inline;font-size:9px">HOT</span></div>
+            <div class="card-desc">80% do tempo de um analista real é isso. Não subestime</div>
+          </div>
+        </div>
+        <div class="tag-cloud">
+          <span class="tag core">Dados faltantes (NaN / NULL)</span>
+          <span class="tag">Estratégias de imputação</span>
+          <span class="tag">Detecção e tratamento de outliers</span>
+          <span class="tag">Remoção de duplicatas</span>
+          <span class="tag">Tipagem correta de colunas</span>
+          <span class="tag">Normalização de strings</span>
+          <span class="tag">Validação de schema (Pydantic)</span>
+          <span class="tag hot">Great Expectations</span>
+          <span class="tag new">Soda Core</span>
+          <span class="tag">Pandera (validação de DataFrames)</span>
+          <span class="tag">Dados inconsistentes e conflitantes</span>
+        </div>
+      </div>
+
+      <div class="card c3">
+        <div class="card-header">
+          <span class="card-icon">🔄</span>
+          <div class="card-title-block">
+            <div class="card-title">Pipelines de Dados: ETL / ELT</div>
+            <div class="card-desc">Como mover e transformar dados em escala, de forma confiável</div>
+          </div>
+        </div>
+        <div class="tag-cloud">
+          <span class="tag hot">dbt (data build tool)</span>
+          <span class="tag hot">Apache Airflow (orquestração)</span>
+          <span class="tag new">Dagster (orquestração moderna)</span>
+          <span class="tag new">Prefect 3.x</span>
+          <span class="tag">Luigi</span>
+          <span class="tag">Batch vs. Streaming</span>
+          <span class="tag">Idempotência e reprocessamento</span>
+          <span class="tag">Data contracts</span>
+          <span class="tag new">dlt (data load tool)</span>
+          <span class="tag">Ingestão incremental</span>
+          <span class="tag">ELT vs. ETL tradicional</span>
+        </div>
+      </div>
+
+      <div class="card c3">
+        <div class="card-header">
+          <span class="card-icon">🗄️</span>
+          <div class="card-title-block">
+            <div class="card-title">Bancos de Dados</div>
+            <div class="card-desc">OLTP para operações, OLAP para análise — saiba a diferença</div>
+          </div>
+        </div>
+        <div class="tag-cloud">
+          <span class="tag core">PostgreSQL (relacional principal)</span>
+          <span class="tag">MySQL / MariaDB</span>
+          <span class="tag">SQLite (local e testes)</span>
+          <span class="tag">MongoDB (documento)</span>
+          <span class="tag">Redis (cache / KV)</span>
+          <span class="tag">Cassandra (wide-column)</span>
+          <span class="tag new">DuckDB (OLAP local/SQL in-process)</span>
+          <span class="tag">OLTP vs. OLAP</span>
+          <span class="tag">Normalização (1NF, 2NF, 3NF)</span>
+          <span class="tag">Modelagem relacional (ER)</span>
+        </div>
+      </div>
+
+      <div class="card c3">
+        <div class="card-header">
+          <span class="card-icon">🏛️</span>
+          <div class="card-title-block">
+            <div class="card-title">Data Warehouses & Lakes <span class="tag hot" style="display:inline;font-size:9px">HOT</span></div>
+            <div class="card-desc">Onde os dados analíticos de empresas realmente vivem</div>
+          </div>
+        </div>
+        <div class="tag-cloud">
+          <span class="tag hot">BigQuery (GCP)</span>
+          <span class="tag hot">Snowflake</span>
+          <span class="tag">Redshift (AWS)</span>
+          <span class="tag hot">Databricks</span>
+          <span class="tag new">Delta Lake / Delta Tables</span>
+          <span class="tag new">Apache Iceberg (table format)</span>
+          <span class="tag new">Apache Hudi</span>
+          <span class="tag">Data Lakehouse (paradigma atual)</span>
+          <span class="tag">Particionamento e clustering</span>
+          <span class="tag">Columnar storage (Parquet, ORC)</span>
+          <span class="tag">Custo e performance</span>
+        </div>
+      </div>
+
+      <div class="card c3">
+        <div class="card-header">
+          <span class="card-icon">⚡</span>
+          <div class="card-title-block">
+            <div class="card-title">Dados em Tempo Real <span class="tag new" style="display:inline;font-size:9px">NEW</span></div>
+            <div class="card-desc">Tendência crescente: analytics não pode mais esperar o batch de amanhã</div>
+          </div>
+        </div>
+        <div class="tag-cloud">
+          <span class="tag hot">Apache Kafka (event streaming)</span>
+          <span class="tag">Apache Spark Streaming</span>
+          <span class="tag">Apache Flink</span>
+          <span class="tag">AWS Kinesis</span>
+          <span class="tag">Google Pub/Sub</span>
+          <span class="tag new">Confluent Platform</span>
+          <span class="tag new">RisingWave (streaming SQL)</span>
+          <span class="tag">CDC (Change Data Capture)</span>
+          <span class="tag new">Debezium</span>
+          <span class="tag">Real-time dashboards</span>
+        </div>
+      </div>
+
+      <div class="card c3">
+        <div class="card-header">
+          <span class="card-icon">🏗️</span>
+          <div class="card-title-block">
+            <div class="card-title">Modelagem de Dados</div>
+            <div class="card-desc">Estruturar bem os dados é o que torna as análises confiáveis</div>
+          </div>
+        </div>
+        <div class="tag-cloud">
+          <span class="tag core">Star Schema</span>
+          <span class="tag">Snowflake Schema</span>
+          <span class="tag">Metodologia Kimball</span>
+          <span class="tag">Data Vault 2.0</span>
+          <span class="tag">Dimensões e tabelas de fatos</span>
+          <span class="tag">SCD (Slowly Changing Dimensions)</span>
+          <span class="tag">One Big Table (OBT)</span>
+          <span class="tag new">Data Mesh (arquitetura descentralizada)</span>
+          <span class="tag new">Data Contracts</span>
+          <span class="tag">Documentação de dados</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="phase-connector">▼ PRÓXIMA FASE</div>
+
+  <!-- ══════════════════════ FASE 4 ══════════════════════ -->
+  <div class="phase">
+    <div class="section-label">
+      <span class="section-num">04</span>
+      <h2 class="section-title" style="color:#ffc832">Estatística & Análise Exploratória</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="card-grid">
+
+      <div class="card c4">
+        <div class="card-header">
+          <span class="card-icon">📊</span>
+          <div class="card-title-block">
+            <div class="card-title">Estatística Descritiva</div>
+            <div class="card-desc">O primeiro passo de qualquer análise de dados séria</div>
+          </div>
+        </div>
+        <div class="tag-cloud">
+          <span class="tag core">Média, mediana e moda</span>
+          <span class="tag core">Desvio padrão e variância</span>
+          <span class="tag">Quartis e percentis</span>
+          <span class="tag">Assimetria (skewness)</span>
+          <span class="tag">Curtose (kurtosis)</span>
+          <span class="tag">Correlação de Pearson e Spearman</span>
+          <span class="tag">Covariância</span>
+          <span class="tag">Tabelas de frequência</span>
+          <span class="tag">Tabelas de contingência</span>
+        </div>
+      </div>
+
+      <div class="card c4">
+        <div class="card-header">
+          <span class="card-icon">🔬</span>
+          <div class="card-title-block">
+            <div class="card-title">Inferência Estatística <span class="tag hot" style="display:inline;font-size:9px">HOT</span></div>
+            <div class="card-desc">Tomar decisões com dados — e saber quando você está errado</div>
+          </div>
+        </div>
+        <div class="tag-cloud">
+          <span class="tag core">Testes de hipótese</span>
+          <span class="tag core">p-valor e significância</span>
+          <span class="tag">Erro tipo I (falso positivo)</span>
+          <span class="tag">Erro tipo II (falso negativo)</span>
+          <span class="tag">Intervalos de confiança</span>
+          <span class="tag">t-test (1 e 2 amostras)</span>
+          <span class="tag">ANOVA e ANOVA de dois fatores</span>
+          <span class="tag">Teste qui-quadrado</span>
+          <span class="tag">Mann-Whitney (não-paramétrico)</span>
+          <span class="tag">Bootstrapping</span>
+          <span class="tag hot">Correção de Bonferroni (múltiplos testes)</span>
+        </div>
+      </div>
+
+      <div class="card c4">
+        <div class="card-header">
+          <span class="card-icon">📉</span>
+          <div class="card-title-block">
+            <div class="card-title">Distribuições de Probabilidade</div>
+            <div class="card-desc">Entender as distribuições é entender os dados em si</div>
+          </div>
+        </div>
+        <div class="tag-cloud">
+          <span class="tag core">Normal (Gaussiana)</span>
+          <span class="tag">Binomial</span>
+          <span class="tag">Poisson</span>
+          <span class="tag">Exponencial</span>
+          <span class="tag">Beta e Gama</span>
+          <span class="tag">Log-normal</span>
+          <span class="tag">Cauda longa (Pareto)</span>
+          <span class="tag core">Teorema Central do Limite</span>
+          <span class="tag">Transformações de distribuições</span>
+          <span class="tag">Testes de normalidade (Shapiro-Wilk)</span>
+        </div>
+      </div>
+
+      <div class="card c4">
+        <div class="card-header">
+          <span class="card-icon">🔍</span>
+          <div class="card-title-block">
+            <div class="card-title">EDA — Análise Exploratória de Dados</div>
+            <div class="card-desc">A arte de fazer perguntas certas e encontrar padrões nos dados</div>
+          </div>
+        </div>
+        <div class="tag-cloud">
+          <span class="tag core">Profiling de dados (ydata-profiling)</span>
+          <span class="tag">Histogramas e KDE plots</span>
+          <span class="tag">Boxplots e violin plots</span>
+          <span class="tag">Scatter plots e heatmaps</span>
+          <span class="tag">Pair plots</span>
+          <span class="tag">Análise bivariada e multivariada</span>
+          <span class="tag">Detecção de padrões e anomalias</span>
+          <span class="tag">Pivot tables exploratórias</span>
+          <span class="tag new">Limpeza orientada a perguntas (question-driven EDA)</span>
+        </div>
+      </div>
+
+      <div class="card c4">
+        <div class="card-header">
+          <span class="card-icon">🧪</span>
+          <div class="card-title-block">
+            <div class="card-title">Experimentação & A/B Testing <span class="tag hot" style="display:inline;font-size:9px">HOT</span></div>
+            <div class="card-desc">Como empresas tomam decisões baseadas em dados reais — não opiniões</div>
+          </div>
+        </div>
+        <div class="tag-cloud">
+          <span class="tag core">Design de experimentos</span>
+          <span class="tag">Grupo de controle e tratamento</span>
+          <span class="tag">Cálculo de sample size</span>
+          <span class="tag">Poder estatístico</span>
+          <span class="tag hot">Testes multivariados</span>
+          <span class="tag">Significância prática vs. estatística</span>
+          <span class="tag hot">Bayesian A/B Testing</span>
+          <span class="tag new">Causal inference (DiD, RDD)</span>
+          <span class="tag new">Synthetic control</span>
+          <span class="tag">Bias de seleção</span>
+          <span class="tag">Novelty effect</span>
+        </div>
+      </div>
+
+      <div class="card c4">
+        <div class="card-header">
+          <span class="card-icon">📅</span>
+          <div class="card-title-block">
+            <div class="card-title">Séries Temporais</div>
+            <div class="card-desc">Análise de dados ao longo do tempo — vendas, finanças, demanda</div>
+          </div>
+        </div>
+        <div class="tag-cloud">
+          <span class="tag">Tendência, sazonalidade e resíduo</span>
+          <span class="tag">Decomposição (STL)</span>
+          <span class="tag">ARIMA / SARIMA</span>
+          <span class="tag hot">Prophet (Meta)</span>
+          <span class="tag">Autocorrelação (ACF / PACF)</span>
+          <span class="tag">Forecasting avançado</span>
+          <span class="tag new">NeuralProphet</span>
+          <span class="tag new">TimeGPT</span>
+          <span class="tag">Dados de painel</span>
+          <span class="tag">Detecção de anomalias temporais</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="phase-connector">▼ PRÓXIMA FASE</div>
+
+  <!-- ══════════════════════ FASE 5 ══════════════════════ -->
+  <div class="phase">
+    <div class="section-label">
+      <span class="section-num">05</span>
+      <h2 class="section-title" style="color:#3dd6cc">Machine Learning & Inteligência Artificial</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="card-grid">
+
+      <div class="alert-box">
+        <strong>2025 Update:</strong> O campo de IA avançou muito nos últimos 2 anos. Além do ML clássico, dominar LLMs e agentes de IA tornou-se essencial para se manter relevante. Não ignore o ML clássico — ele ainda resolve 80% dos problemas reais de negócio com muito menos custo.
+      </div>
+
+      <div class="card c5">
+        <div class="card-header">
+          <span class="card-icon">📖</span>
+          <div class="card-title-block">
+            <div class="card-title">Aprendizado Supervisionado</div>
+            <div class="card-desc">A maioria dos projetos de ML em empresas usam esses algoritmos</div>
+          </div>
+        </div>
+        <div class="tag-cloud">
+          <span class="tag core">Regressão Linear e variantes</span>
+          <span class="tag core">Regressão Logística</span>
+          <span class="tag">Árvores de Decisão</span>
+          <span class="tag hot">Random Forest</span>
+          <span class="tag hot">Gradient Boosting (GBM)</span>
+          <span class="tag hot">XGBoost</span>
+          <span class="tag hot">LightGBM</span>
+          <span class="tag">CatBoost</span>
+          <span class="tag">SVM (Support Vector Machine)</span>
+          <span class="tag">KNN (K-Nearest Neighbors)</span>
+          <span class="tag">Naive Bayes</span>
+          <span class="tag">Regressão Ridge e Lasso</span>
+          <span class="tag">Elastic Net</span>
+        </div>
+      </div>
+
+      <div class="card c5">
+        <div class="card-header">
+          <span class="card-icon">🧩</span>
+          <div class="card-title-block">
+            <div class="card-title">Aprendizado Não Supervisionado</div>
+            <div class="card-desc">Encontrar padrões sem rótulos — segmentação, compressão, anomalia</div>
+          </div>
+        </div>
+        <div class="tag-cloud">
+          <span class="tag">K-Means Clustering</span>
+          <span class="tag">DBSCAN</span>
+          <span class="tag">Clustering Hierárquico</span>
+          <span class="tag">PCA (Análise de Componentes)</span>
+          <span class="tag">t-SNE (visualização)</span>
+          <span class="tag hot">UMAP (redução dimensional)</span>
+          <span class="tag">Regras de associação (Apriori, FP-Growth)</span>
+          <span class="tag">Isolation Forest (anomalias)</span>
+          <span class="tag new">HDBSCAN</span>
+          <span class="tag">Autoencoders</span>
+        </div>
+      </div>
+
+      <div class="card c5">
+        <div class="card-header">
+          <span class="card-icon">⚖️</span>
+          <div class="card-title-block">
+            <div class="card-title">Avaliação & Validação de Modelos <span class="tag hot" style="display:inline;font-size:9px">HOT</span></div>
+            <div class="card-desc">Um modelo sem boa avaliação não é um modelo — é um risco</div>
+          </div>
+        </div>
+        <div class="tag-cloud">
+          <span class="tag core">Train / Validation / Test split</span>
+          <span class="tag core">K-Fold Cross-Validation</span>
+          <span class="tag">Stratified K-Fold</span>
+          <span class="tag hot">AUC-ROC e PR Curve</span>
+          <span class="tag">Precision, Recall, F1-Score</span>
+          <span class="tag">Matriz de confusão</span>
+          <span class="tag">RMSE, MAE, MAPE (regressão)</span>
+          <span class="tag">Overfitting & Underfitting</span>
+          <span class="tag">Bias-Variance Tradeoff</span>
+          <span class="tag hot">SHAP (explicabilidade)</span>
+          <span class="tag">LIME</span>
+          <span class="tag new">Calibração de probabilidades</span>
+        </div>
+      </div>
+
+      <div class="card c5">
+        <div class="card-header">
+          <span class="card-icon">🔧</span>
+          <div class="card-title-block">
+            <div class="card-title">Feature Engineering</div>
+            <div class="card-desc">A habilidade que mais diferencia um bom cientista de dados</div>
+          </div>
+        </div>
+        <div class="tag-cloud">
+          <span class="tag core">Seleção de features (Filter, Wrapper, Embedded)</span>
+          <span class="tag">One-hot encoding</span>
+          <span class="tag hot">Target encoding</span>
+          <span class="tag">Label encoding</span>
+          <span class="tag">Ordinal encoding</span>
+          <span class="tag">Scaling: StandardScaler, MinMax, RobustScaler</span>
+          <span class="tag">Criação de variáveis (date features, binning)</span>
+          <span class="tag hot">Feature importance (SHAP, permutation)</span>
+          <span class="tag new">Embeddings como features</span>
+          <span class="tag">Tratamento de cardinalidade alta</span>
+        </div>
+      </div>
+
+      <div class="card c5">
+        <div class="card-header">
+          <span class="card-icon">🧠</span>
+          <div class="card-title-block">
+            <div class="card-title">Deep Learning <span class="tag hot" style="display:inline;font-size:9px">HOT</span></div>
+            <div class="card-desc">Base para NLP, visão computacional e modelos generativos</div>
+          </div>
+        </div>
+        <div class="tag-cloud">
+          <span class="tag core">Redes Neurais (MLP)</span>
+          <span class="tag core">Backpropagation e otimizadores (Adam, SGD)</span>
+          <span class="tag">CNNs (imagens)</span>
+          <span class="tag">RNNs e LSTMs (sequências)</span>
+          <span class="tag hot">Transformers e Attention</span>
+          <span class="tag hot">PyTorch (framework principal)</span>
+          <span class="tag">TensorFlow / Keras</span>
+          <span class="tag new">JAX (Google)</span>
+          <span class="tag">Regularização (Dropout, BatchNorm)</span>
+          <span class="tag">Transfer Learning</span>
+          <span class="tag new">Flash Attention</span>
+        </div>
+      </div>
+
+      <div class="card c5">
+        <div class="card-header">
+          <span class="card-icon">🤖</span>
+          <div class="card-title-block">
+            <div class="card-title">LLMs & IA Generativa <span class="tag ai" style="display:inline;font-size:9px">AI</span> <span class="tag hot" style="display:inline;font-size:9px">HOT</span></div>
+            <div class="card-desc">A maior revolução em dados dos últimos 10 anos. Essencial em 2025</div>
+          </div>
+        </div>
+        <div class="tag-cloud">
+          <span class="tag hot">Prompt Engineering</span>
+          <span class="tag hot">RAG (Retrieval-Augmented Generation)</span>
+          <span class="tag hot">Fine-tuning (LoRA, QLoRA)</span>
+          <span class="tag ai">LangChain / LangGraph</span>
+          <span class="tag ai">LlamaIndex</span>
+          <span class="tag ai">OpenAI API / Anthropic API</span>
+          <span class="tag hot">Embeddings semânticos</span>
+          <span class="tag hot">Vector databases (Pinecone, Weaviate, Chroma, pgvector)</span>
+          <span class="tag new">Agentes de IA (AI Agents)</span>
+          <span class="tag new">Function calling / Tool use</span>
+          <span class="tag new">Guardrails e avaliação de LLMs</span>
+          <span class="tag new">Multimodal (texto + imagem + áudio)</span>
+          <span class="tag ai">HuggingFace Hub</span>
+        </div>
+      </div>
+
+      <div class="card c5">
+        <div class="card-header">
+          <span class="card-icon">🚀</span>
+          <div class="card-title-block">
+            <div class="card-title">MLOps <span class="tag hot" style="display:inline;font-size:9px">HOT</span></div>
+            <div class="card-desc">Levar modelos para produção e mantê-los funcionando — o elo perdido</div>
+          </div>
+        </div>
+        <div class="tag-cloud">
+          <span class="tag hot">MLflow (experimentos e registry)</span>
+          <span class="tag">DVC (versionamento de dados)</span>
+          <span class="tag">Weights & Biases (W&B)</span>
+          <span class="tag">Model Registry e versioning</span>
+          <span class="tag">CI/CD para ML (GitHub Actions)</span>
+          <span class="tag hot">FastAPI (servir modelos)</span>
+          <span class="tag new">BentoML</span>
+          <span class="tag new">Ray Serve</span>
+          <span class="tag">Monitoramento de modelos em produção</span>
+          <span class="tag hot">Data drift e concept drift</span>
+          <span class="tag new">LLMOps (monitoramento de LLMs)</span>
+          <span class="tag">Feature stores (Feast)</span>
+        </div>
+      </div>
+
+      <div class="card c5">
+        <div class="card-header">
+          <span class="card-icon">📚</span>
+          <div class="card-title-block">
+            <div class="card-title">Bibliotecas & Frameworks ML</div>
+            <div class="card-desc">O ecossistema Python de ML, completo e atualizado</div>
+          </div>
+        </div>
+        <div class="tag-cloud">
+          <span class="tag hot">Scikit-learn</span>
+          <span class="tag hot">XGBoost</span>
+          <span class="tag">LightGBM</span>
+          <span class="tag">CatBoost</span>
+          <span class="tag">Optuna (hyperparameter tuning)</span>
+          <span class="tag">Ray Tune</span>
+          <span class="tag hot">SHAP (explicabilidade)</span>
+          <span class="tag">LIME</span>
+          <span class="tag">imbalanced-learn (classes desbalanceadas)</span>
+          <span class="tag new">TabPFN (transformer para dados tabulares)</span>
+          <span class="tag new">AutoGluon (AutoML)</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="phase-connector">▼ PRÓXIMA FASE</div>
+
+  <!-- ══════════════════════ FASE 6 ══════════════════════ -->
+  <div class="phase">
+    <div class="section-label">
+      <span class="section-num">06</span>
+      <h2 class="section-title" style="color:#ff8c3a">Visualização de Dados & Business Intelligence</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="card-grid">
+
+      <div class="card c6">
+        <div class="card-header">
+          <span class="card-icon">📊</span>
+          <div class="card-title-block">
+            <div class="card-title">Ferramentas de BI <span class="tag hot" style="display:inline;font-size:9px">HOT</span></div>
+            <div class="card-desc">As ferramentas que analistas usam no dia a dia das empresas</div>
+          </div>
+        </div>
+        <div class="tag-cloud">
+          <span class="tag hot">Power BI (Microsoft)</span>
+          <span class="tag hot">Tableau</span>
+          <span class="tag hot">Looker / Looker Studio</span>
+          <span class="tag">Metabase (open source)</span>
+          <span class="tag">Apache Superset</span>
+          <span class="tag">Grafana (observabilidade)</span>
+          <span class="tag">Qlik Sense</span>
+          <span class="tag new">Evidence (BI com código)</span>
+          <span class="tag new">Rill (OLAP analytics)</span>
+        </div>
+      </div>
+
+      <div class="card c6">
+        <div class="card-header">
+          <span class="card-icon">🎨</span>
+          <div class="card-title-block">
+            <div class="card-title">Princípios de Visualização & Design</div>
+            <div class="card-desc">Técnica sem teoria visual produz gráficos confusos e enganosos</div>
+          </div>
+        </div>
+        <div class="tag-cloud">
+          <span class="tag core">Hierarquia visual (atenção e foco)</span>
+          <span class="tag core">Escolher o gráfico certo para cada dado</span>
+          <span class="tag">Teoria das cores para dados</span>
+          <span class="tag hot">Storytelling com dados</span>
+          <span class="tag">Dashboard design (layout e fluxo)</span>
+          <span class="tag">Acessibilidade (daltonismo)</span>
+          <span class="tag">Gestalt principles</span>
+          <span class="tag">Evitar chartjunk (Tufte)</span>
+          <span class="tag">Data-ink ratio</span>
+          <span class="tag">Mobile-first dashboards</span>
+        </div>
+      </div>
+
+      <div class="card c6">
+        <div class="card-header">
+          <span class="card-icon">🌐</span>
+          <div class="card-title-block">
+            <div class="card-title">Visualização Avançada & Apps de Dados</div>
+            <div class="card-desc">Quando BI tradicional não é suficiente — crie suas próprias ferramentas</div>
+          </div>
+        </div>
+        <div class="tag-cloud">
+          <span class="tag hot">Streamlit (apps de dados em Python)</span>
+          <span class="tag">Plotly Dash</span>
+          <span class="tag">Bokeh</span>
+          <span class="tag">Altair (gramática de gráficos)</span>
+          <span class="tag">D3.js (gráficos custom web)</span>
+          <span class="tag new">Observable Plot</span>
+          <span class="tag new">Vega-Altair</span>
+          <span class="tag">Apache ECharts</span>
+          <span class="tag new">Marimo (notebooks reativos)</span>
+          <span class="tag new">Vizro (Plotly + Pydantic)</span>
+        </div>
+      </div>
+
+      <div class="card c6">
+        <div class="card-header">
+          <span class="card-icon">📋</span>
+          <div class="card-title-block">
+            <div class="card-title">DAX, Power Query & Modelagem no Power BI</div>
+            <div class="card-desc">Essencial para quem trabalha com o ecossistema Microsoft</div>
+          </div>
+        </div>
+        <div class="tag-cloud">
+          <span class="tag">Medidas vs. Colunas calculadas</span>
+          <span class="tag hot">CALCULATE e contexto de filtro</span>
+          <span class="tag">FILTER, ALL, ALLEXCEPT</span>
+          <span class="tag">Time intelligence (YTD, MoM, YoY)</span>
+          <span class="tag">M Language (Power Query)</span>
+          <span class="tag">Relacionamentos e cardinalidade</span>
+          <span class="tag">Row-level security (RLS)</span>
+          <span class="tag new">DirectLake (Fabric)</span>
+          <span class="tag new">Microsoft Fabric (novo ecossistema)</span>
+        </div>
+      </div>
+
+      <div class="card c6">
+        <div class="card-header">
+          <span class="card-icon">💼</span>
+          <div class="card-title-block">
+            <div class="card-title">Métricas & KPIs de Negócio <span class="tag hot" style="display:inline;font-size:9px">HOT</span></div>
+            <div class="card-desc">Os números que CEOs e gestores acompanham — saiba calculá-los</div>
+          </div>
+        </div>
+        <div class="tag-cloud">
+          <span class="tag">LTV (Lifetime Value)</span>
+          <span class="tag">CAC (Custo de Aquisição)</span>
+          <span class="tag">Churn Rate e Retention</span>
+          <span class="tag">NPS (Net Promoter Score)</span>
+          <span class="tag">Funis de conversão</span>
+          <span class="tag hot">North Star Metric</span>
+          <span class="tag">OKRs e KPIs</span>
+          <span class="tag">MRR e ARR</span>
+          <span class="tag">ARPU / ARPA</span>
+          <span class="tag">Análise de cohort</span>
+          <span class="tag">Análise RFM (Recência, Frequência, Monetário)</span>
+          <span class="tag new">Product Analytics (Amplitude, Mixpanel)</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="phase-connector">▼ PRÓXIMA FASE</div>
+
+  <!-- ══════════════════════ FASE 7 ══════════════════════ -->
+  <div class="phase">
+    <div class="section-label">
+      <span class="section-num">07</span>
+      <h2 class="section-title" style="color:#a78bfa">Cloud & Infraestrutura de Dados</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="card-grid">
+
+      <div class="card c7">
+        <div class="card-header">
+          <span class="card-icon">☁️</span>
+          <div class="card-title-block">
+            <div class="card-title">Plataformas Cloud <span class="tag hot" style="display:inline;font-size:9px">HOT</span></div>
+            <div class="card-desc">Todo dado profissional hoje vive na cloud. Conhecer é obrigatório</div>
+          </div>
+        </div>
+        <div class="tag-cloud">
+          <span class="tag hot">AWS (Amazon Web Services)</span>
+          <span class="tag hot">Google Cloud Platform (GCP)</span>
+          <span class="tag">Microsoft Azure</span>
+          <span class="tag">S3 / GCS / Azure Blob Storage</span>
+          <span class="tag">EC2 / Compute Engine / VM</span>
+          <span class="tag">Cloud Functions / Lambda</span>
+          <span class="tag">IAM (Identity & Access Management)</span>
+          <span class="tag">VPC e Networking básico</span>
+          <span class="tag new">Certificações: AWS Data Engineer, GCP Professional Data Engineer</span>
+        </div>
+      </div>
+
+      <div class="card c7">
+        <div class="card-header">
+          <span class="card-icon">📡</span>
+          <div class="card-title-block">
+            <div class="card-title">Serviços Gerenciados de Dados</div>
+            <div class="card-desc">A infraestrutura de dados moderna é quase toda gerenciada</div>
+          </div>
+        </div>
+        <div class="tag-cloud">
+          <span class="tag">AWS Glue (ETL gerenciado)</span>
+          <span class="tag">AWS Athena (SQL no S3)</span>
+          <span class="tag">GCP Dataflow (Apache Beam)</span>
+          <span class="tag">GCP Dataproc (Spark gerenciado)</span>
+          <span class="tag">GCP Vertex AI (ML plataforma)</span>
+          <span class="tag">Azure Synapse Analytics</span>
+          <span class="tag">Cloud Composer (Airflow gerenciado)</span>
+          <span class="tag new">AWS SageMaker</span>
+          <span class="tag new">Microsoft Fabric (data platform unificada)</span>
+        </div>
+      </div>
+
+      <div class="card c7">
+        <div class="card-header">
+          <span class="card-icon">🐳</span>
+          <div class="card-title-block">
+            <div class="card-title">Containers, DevOps & IaC</div>
+            <div class="card-desc">Reproducibilidade e automação — o que separa pipelines amadores de profissionais</div>
+          </div>
+        </div>
+        <div class="tag-cloud">
+          <span class="tag core">Docker (containers)</span>
+          <span class="tag">Docker Compose (multi-serviço)</span>
+          <span class="tag">Kubernetes — conceitos básicos</span>
+          <span class="tag">CI/CD (Integração contínua)</span>
+          <span class="tag">GitHub Actions</span>
+          <span class="tag new">Terraform (IaC)</span>
+          <span class="tag new">Pulumi (IaC em Python)</span>
+          <span class="tag">Makefile para pipelines</span>
+          <span class="tag">Environment variables e segredos</span>
+        </div>
+      </div>
+
+      <div class="card c7">
+        <div class="card-header">
+          <span class="card-icon">🔐</span>
+          <div class="card-title-block">
+            <div class="card-title">Governança, Segurança & Privacidade</div>
+            <div class="card-desc">LGPD não é opcional — e empresas cada vez mais exigem isso</div>
+          </div>
+        </div>
+        <div class="tag-cloud">
+          <span class="tag hot">LGPD (Lei Geral de Proteção de Dados)</span>
+          <span class="tag">GDPR (referência europeia)</span>
+          <span class="tag">Anonimização e pseudonimização</span>
+          <span class="tag">Data Catalog (Dataplex, Alation, DataHub)</span>
+          <span class="tag">Data Lineage (rastreabilidade)</span>
+          <span class="tag">IAM e controle de acesso por role</span>
+          <span class="tag">Criptografia em repouso e em trânsito</span>
+          <span class="tag new">Data observability (Monte Carlo, Bigeye)</span>
+          <span class="tag new">OpenMetadata</span>
+          <span class="tag">Políticas de retenção de dados</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="phase-connector">▼ PRÓXIMA FASE</div>
+
+  <!-- ══════════════════════ FASE 8 ══════════════════════ -->
+  <div class="phase">
+    <div class="section-label">
+      <span class="section-num">08</span>
+      <h2 class="section-title" style="color:#fb7db5">Soft Skills & Habilidades de Negócio</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="card-grid">
+
+      <div class="highlight-box">
+        <p>Dados sem comunicação são apenas números. As habilidades desta fase são o que fazem um profissional de dados ser <strong>realmente valorizado</strong> — e o que mais falta no mercado. Técnica se aprende; pensamento analítico de negócio é mais raro.</p>
+      </div>
+
+      <div class="card c8">
+        <div class="card-header">
+          <span class="card-icon">📣</span>
+          <div class="card-title-block">
+            <div class="card-title">Comunicação de Dados <span class="tag hot" style="display:inline;font-size:9px">HOT</span></div>
+            <div class="card-desc">O insight que não é comunicado é igual a nenhum insight</div>
+          </div>
+        </div>
+        <div class="tag-cloud">
+          <span class="tag core">Storytelling com dados (narrativa)</span>
+          <span class="tag">Apresentações para executivos (C-level)</span>
+          <span class="tag">Simplificar o complexo</span>
+          <span class="tag">Escrever insights com clareza</span>
+          <span class="tag">Relatórios e memos de análise</span>
+          <span class="tag">Escolher o visual certo para a audiência</span>
+          <span class="tag new">Comunicar com IA: usar LLMs para redigir relatórios</span>
+        </div>
+      </div>
+
+      <div class="card c8">
+        <div class="card-header">
+          <span class="card-icon">🧠</span>
+          <div class="card-title-block">
+            <div class="card-title">Pensamento Analítico & Problem Solving</div>
+            <div class="card-desc">Saber o que analisar é mais importante do que saber como analisar</div>
+          </div>
+        </div>
+        <div class="tag-cloud">
+          <span class="tag core">Problem framing (definir bem a pergunta)</span>
+          <span class="tag">Formulação de hipóteses</span>
+          <span class="tag">Raciocínio causal vs. correlacional</span>
+          <span class="tag">Root cause analysis</span>
+          <span class="tag">First principles thinking</span>
+          <span class="tag">Framework MECE</span>
+          <span class="tag">Pirâmide de Minto</span>
+          <span class="tag">Análise de trade-offs</span>
+        </div>
+      </div>
+
+      <div class="card c8">
+        <div class="card-header">
+          <span class="card-icon">🤝</span>
+          <div class="card-title-block">
+            <div class="card-title">Colaboração & Stakeholders</div>
+            <div class="card-desc">Trabalhar com times de produto, eng e negócio é habilidade técnica</div>
+          </div>
+        </div>
+        <div class="tag-cloud">
+          <span class="tag">Gestão de expectativas</span>
+          <span class="tag">Traduzir demandas de negócio em SQL/Python</span>
+          <span class="tag">Documentação de análises</span>
+          <span class="tag">Code review para dados</span>
+          <span class="tag">Metodologias ágeis (Scrum, Kanban)</span>
+          <span class="tag">Feedback construtivo</span>
+          <span class="tag">Reuniões eficientes</span>
+          <span class="tag new">Trabalho assíncrono e remoto</span>
+        </div>
+      </div>
+
+      <div class="card c8">
+        <div class="card-header">
+          <span class="card-icon">💡</span>
+          <div class="card-title-block">
+            <div class="card-title">Domínio de Negócio & Contexto Setorial</div>
+            <div class="card-desc">Quanto mais você entende do negócio, mais valioso é seu trabalho com dados</div>
+          </div>
+        </div>
+        <div class="tag-cloud">
+          <span class="tag">Entender o modelo de negócio da empresa</span>
+          <span class="tag">Finanças básicas (P&L, balanço)</span>
+          <span class="tag">Marketing digital e funis</span>
+          <span class="tag">Produto e UX</span>
+          <span class="tag">Operações e supply chain</span>
+          <span class="tag">Cadeia de valor</span>
+          <span class="tag">Conhecer o cliente final</span>
+          <span class="tag new">FinTech, Health, Varejo, SaaS — especializar por vertical</span>
+        </div>
+      </div>
+
+      <div class="card c8">
+        <div class="card-header">
+          <span class="card-icon">📌</span>
+          <div class="card-title-block">
+            <div class="card-title">Portfólio & Construção de Carreira</div>
+            <div class="card-desc">Competência invisível é competência desperdiçada</div>
+          </div>
+        </div>
+        <div class="tag-cloud">
+          <span class="tag core">GitHub organizado e documentado</span>
+          <span class="tag hot">LinkedIn com projetos e resultados reais</span>
+          <span class="tag">Kaggle (competições e notebooks)</span>
+          <span class="tag">Blog técnico (Medium, Substack)</span>
+          <span class="tag">Contribuição open source</span>
+          <span class="tag hot">Certificações estratégicas (AWS, GCP, dbt)</span>
+          <span class="tag">Networking ativo na comunidade</span>
+          <span class="tag new">Projetos pessoais com dados reais (não só tutoriais)</span>
+          <span class="tag">Presença em comunidades (Discord, Slack, eventos)</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="phase-connector">▼ PRÓXIMA FASE</div>
+
+  <!-- ══════════════════════ FASE 9 ══════════════════════ -->
+  <div class="phase">
+    <div class="section-label">
+      <span class="section-num">09</span>
+      <h2 class="section-title" style="color:#22d3a8">Especializações — Escolha seu Caminho</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="card-grid wide">
+
+      <div class="highlight-box">
+        <p>Após dominar as fases anteriores, você escolhe uma ou mais trilhas de especialização. <strong>Não é obrigatório fazer tudo</strong> — escolha de acordo com seu objetivo de carreira, salário desejado e mercado. Em 2025, as trilhas de <strong>ML Engineer</strong> e <strong>Analytics Engineer</strong> são as que mais crescem em demanda.</p>
+      </div>
+
+      <div class="card c9">
+        <div class="card-header">
+          <span class="card-icon">🧑‍💼</span>
+          <div class="card-title-block">
+            <div class="card-title">Data Analyst / Business Analyst</div>
+            <div class="card-desc">Foco em responder perguntas de negócio com dados — a porta de entrada mais comum</div>
+          </div>
+        </div>
+        <div class="tag-cloud">
+          <span class="tag hot">SQL avançado (window functions, CTEs)</span>
+          <span class="tag hot">Power BI ou Tableau</span>
+          <span class="tag">Excel / Google Sheets avançado</span>
+          <span class="tag">Análise de cohort e funis</span>
+          <span class="tag">A/B Testing e experimentos</span>
+          <span class="tag">Storytelling com dados</span>
+          <span class="tag">Métricas de produto e growth</span>
+          <span class="tag new">Product Analytics (Amplitude, Mixpanel)</span>
+        </div>
+      </div>
+
+      <div class="card c9">
+        <div class="card-header">
+          <span class="card-icon">🔬</span>
+          <div class="card-title-block">
+            <div class="card-title">Data Scientist</div>
+            <div class="card-desc">Modelos preditivos, experimentação e análise avançada</div>
+          </div>
+        </div>
+        <div class="tag-cloud">
+          <span class="tag hot">ML avançado (XGBoost, ensemble)</span>
+          <span class="tag">Deep Learning (PyTorch)</span>
+          <span class="tag">Experimentação e A/B Testing</span>
+          <span class="tag">Estatística avançada (causal inference)</span>
+          <span class="tag">NLP e processamento de texto</span>
+          <span class="tag">Computer Vision</span>
+          <span class="tag new">LLMs aplicados a problemas de negócio</span>
+          <span class="tag">Publicação e deploy de modelos</span>
+          <span class="tag">SHAP e explicabilidade</span>
+        </div>
+      </div>
+
+      <div class="card c9">
+        <div class="card-header">
+          <span class="card-icon">🏗️</span>
+          <div class="card-title-block">
+            <div class="card-title">Data Engineer</div>
+            <div class="card-desc">Construir e manter a infraestrutura que permite as análises existirem</div>
+          </div>
+        </div>
+        <div class="tag-cloud">
+          <span class="tag hot">Pipelines de dados robustos</span>
+          <span class="tag hot">Apache Spark</span>
+          <span class="tag hot">dbt (transformações SQL)</span>
+          <span class="tag">Kafka (streaming)</span>
+          <span class="tag">Cloud: AWS ou GCP profundo</span>
+          <span class="tag">Airflow ou Dagster</span>
+          <span class="tag">Arquitetura de dados (Lakehouse)</span>
+          <span class="tag new">Apache Iceberg / Delta Lake</span>
+          <span class="tag">Python para engenharia (não só análise)</span>
+          <span class="tag">Monitoramento e observabilidade de dados</span>
+        </div>
+      </div>
+
+      <div class="card c9">
+        <div class="card-header">
+          <span class="card-icon">🤖</span>
+          <div class="card-title-block">
+            <div class="card-title">ML Engineer / AI Engineer <span class="tag new" style="display:inline;font-size:9px">NEW</span> <span class="tag hot" style="display:inline;font-size:9px">HOT</span></div>
+            <div class="card-desc">A trilha que mais cresce em 2025 — ML + engenharia de software + LLMs</div>
+          </div>
+        </div>
+        <div class="tag-cloud">
+          <span class="tag hot">MLOps completo</span>
+          <span class="tag hot">LLMs, RAG e Agentes de IA</span>
+          <span class="tag hot">Deploy de modelos (FastAPI, BentoML)</span>
+          <span class="tag">APIs de ML em produção</span>
+          <span class="tag">Monitoramento de modelos (drift)</span>
+          <span class="tag">Otimização de inferência</span>
+          <span class="tag new">Quantização de modelos (GGUF, ONNX)</span>
+          <span class="tag new">vLLM (serving de LLMs)</span>
+          <span class="tag">Engenharia de software sólida</span>
+        </div>
+      </div>
+
+      <div class="card c9">
+        <div class="card-header">
+          <span class="card-icon">📊</span>
+          <div class="card-title-block">
+            <div class="card-title">Analytics Engineer <span class="tag hot" style="display:inline;font-size:9px">HOT</span></div>
+            <div class="card-desc">O papel que mais cresce no Brasil — ponte entre Eng e Analistas</div>
+          </div>
+        </div>
+        <div class="tag-cloud">
+          <span class="tag hot">dbt expert (modelos, testes, docs)</span>
+          <span class="tag">Modelagem dimensional moderna</span>
+          <span class="tag hot">SQL avançado em DW</span>
+          <span class="tag">Documentação de dados</span>
+          <span class="tag">Testes de qualidade de dados</span>
+          <span class="tag">Metabase / Looker Studio</span>
+          <span class="tag new">Data contracts e acordos de SLO</span>
+          <span class="tag">Git workflow para dados</span>
+          <span class="tag">Governança e catalogação</span>
+        </div>
+      </div>
+
+      <div class="card c9">
+        <div class="card-header">
+          <span class="card-icon">🏢</span>
+          <div class="card-title-block">
+            <div class="card-title">Head of Data / Chief Data Officer</div>
+            <div class="card-desc">Liderança técnica e estratégica — 7–10 anos de experiência</div>
+          </div>
+        </div>
+        <div class="tag-cloud">
+          <span class="tag">Estratégia de dados (data strategy)</span>
+          <span class="tag">Gestão e desenvolvimento de times</span>
+          <span class="tag">Data culture e evangelização interna</span>
+          <span class="tag">ROI de iniciativas de dados</span>
+          <span class="tag">Governança e compliance</span>
+          <span class="tag">Visão executiva e comunicação C-level</span>
+          <span class="tag new">AI strategy e ética de IA</span>
+          <span class="tag">Build vs. Buy (ferramentas)</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ══════════════════════ ECOSSISTEMA ══════════════════════ -->
+  <div class="phase">
+    <div class="section-label">
+      <span class="section-num">+</span>
+      <h2 class="section-title" style="color:#7c6fff">Ecossistema Completo de Ferramentas (2025)</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="card-grid">
+      <div class="big-card">
+
+        <div class="tool-section">
+          <div class="tool-section-label">Linguagens & Runtimes</div>
+          <div class="tool-row">
+            <div class="tool-pill"><span class="dot" style="background:#ffd93d"></span>Python 3.12+</div>
+            <div class="tool-pill"><span class="dot" style="background:#ffd93d"></span>SQL</div>
+            <div class="tool-pill"><span class="dot" style="background:#ffd93d"></span>R 4.x</div>
+            <div class="tool-pill"><span class="dot" style="background:#ffd93d"></span>Scala (Spark)</div>
+            <div class="tool-pill"><span class="dot" style="background:#ffd93d"></span>Bash / Shell</div>
+            <div class="tool-pill"><span class="dot" style="background:#ffd93d"></span>Julia (nicho)</div>
+          </div>
+        </div>
+
+        <div class="tool-section">
+          <div class="tool-section-label">IDEs, Notebooks & Plataformas</div>
+          <div class="tool-row">
+            <div class="tool-pill"><span class="dot"></span>VS Code</div>
+            <div class="tool-pill"><span class="dot"></span>JupyterLab</div>
+            <div class="tool-pill"><span class="dot"></span>Google Colab</div>
+            <div class="tool-pill"><span class="dot"></span>Databricks Notebooks</div>
+            <div class="tool-pill"><span class="dot"></span>Deepnote</div>
+            <div class="tool-pill"><span class="dot"></span>Hex</div>
+            <div class="tool-pill"><span class="dot" style="background:#00e5b0"></span>Marimo (novo)</div>
+            <div class="tool-pill"><span class="dot"></span>Mode Analytics</div>
+            <div class="tool-pill"><span class="dot"></span>Observable</div>
+          </div>
+        </div>
+
+        <div class="tool-section">
+          <div class="tool-section-label">Cloud, Infra & Storage</div>
+          <div class="tool-row">
+            <div class="tool-pill"><span class="dot" style="background:#ff9f43"></span>AWS</div>
+            <div class="tool-pill"><span class="dot" style="background:#ff9f43"></span>GCP</div>
+            <div class="tool-pill"><span class="dot" style="background:#ff9f43"></span>Azure</div>
+            <div class="tool-pill"><span class="dot" style="background:#ff9f43"></span>Snowflake</div>
+            <div class="tool-pill"><span class="dot" style="background:#ff9f43"></span>BigQuery</div>
+            <div class="tool-pill"><span class="dot" style="background:#ff9f43"></span>Databricks</div>
+            <div class="tool-pill"><span class="dot" style="background:#ff9f43"></span>Docker</div>
+            <div class="tool-pill"><span class="dot" style="background:#ff9f43"></span>Kubernetes</div>
+            <div class="tool-pill"><span class="dot" style="background:#ff9f43"></span>Terraform</div>
+            <div class="tool-pill"><span class="dot" style="background:#ff9f43"></span>DuckDB</div>
+            <div class="tool-pill"><span class="dot" style="background:#ff9f43"></span>Microsoft Fabric</div>
+          </div>
+        </div>
+
+        <div class="tool-section">
+          <div class="tool-section-label">Orquestração & Pipelines</div>
+          <div class="tool-row">
+            <div class="tool-pill"><span class="dot" style="background:#ff5f5f"></span>Apache Airflow</div>
+            <div class="tool-pill"><span class="dot" style="background:#ff5f5f"></span>Dagster</div>
+            <div class="tool-pill"><span class="dot" style="background:#ff5f5f"></span>Prefect 3</div>
+            <div class="tool-pill"><span class="dot" style="background:#ff5f5f"></span>dbt Core / Cloud</div>
+            <div class="tool-pill"><span class="dot" style="background:#ff5f5f"></span>dlt (data load tool)</div>
+            <div class="tool-pill"><span class="dot" style="background:#ff5f5f"></span>Apache Kafka</div>
+            <div class="tool-pill"><span class="dot" style="background:#ff5f5f"></span>Debezium (CDC)</div>
+          </div>
+        </div>
+
+        <div class="tool-section">
+          <div class="tool-section-label">ML, IA & LLMs</div>
+          <div class="tool-row">
+            <div class="tool-pill"><span class="dot" style="background:#3dd6cc"></span>Scikit-learn</div>
+            <div class="tool-pill"><span class="dot" style="background:#3dd6cc"></span>PyTorch</div>
+            <div class="tool-pill"><span class="dot" style="background:#3dd6cc"></span>TensorFlow / Keras</div>
+            <div class="tool-pill"><span class="dot" style="background:#3dd6cc"></span>HuggingFace</div>
+            <div class="tool-pill"><span class="dot" style="background:#3dd6cc"></span>LangChain / LangGraph</div>
+            <div class="tool-pill"><span class="dot" style="background:#3dd6cc"></span>LlamaIndex</div>
+            <div class="tool-pill"><span class="dot" style="background:#3dd6cc"></span>MLflow</div>
+            <div class="tool-pill"><span class="dot" style="background:#3dd6cc"></span>W&B</div>
+            <div class="tool-pill"><span class="dot" style="background:#3dd6cc"></span>SHAP</div>
+            <div class="tool-pill"><span class="dot" style="background:#3dd6cc"></span>Optuna</div>
+            <div class="tool-pill"><span class="dot" style="background:#3dd6cc"></span>FastAPI</div>
+            <div class="tool-pill"><span class="dot" style="background:#3dd6cc"></span>vLLM</div>
+          </div>
+        </div>
+
+        <div class="tool-section">
+          <div class="tool-section-label">BI, Visualização & Analytics</div>
+          <div class="tool-row">
+            <div class="tool-pill"><span class="dot" style="background:#ff8c3a"></span>Power BI</div>
+            <div class="tool-pill"><span class="dot" style="background:#ff8c3a"></span>Tableau</div>
+            <div class="tool-pill"><span class="dot" style="background:#ff8c3a"></span>Looker Studio</div>
+            <div class="tool-pill"><span class="dot" style="background:#ff8c3a"></span>Metabase</div>
+            <div class="tool-pill"><span class="dot" style="background:#ff8c3a"></span>Streamlit</div>
+            <div class="tool-pill"><span class="dot" style="background:#ff8c3a"></span>Plotly Dash</div>
+            <div class="tool-pill"><span class="dot" style="background:#ff8c3a"></span>Apache Superset</div>
+            <div class="tool-pill"><span class="dot" style="background:#ff8c3a"></span>Amplitude</div>
+            <div class="tool-pill"><span class="dot" style="background:#ff8c3a"></span>Mixpanel</div>
+          </div>
+        </div>
+
+        <div class="tool-section">
+          <div class="tool-section-label">Qualidade, Catálogo & Observabilidade de Dados</div>
+          <div class="tool-row">
+            <div class="tool-pill"><span class="dot" style="background:#a78bfa"></span>Great Expectations</div>
+            <div class="tool-pill"><span class="dot" style="background:#a78bfa"></span>Soda Core</div>
+            <div class="tool-pill"><span class="dot" style="background:#a78bfa"></span>DataHub</div>
+            <div class="tool-pill"><span class="dot" style="background:#a78bfa"></span>OpenMetadata</div>
+            <div class="tool-pill"><span class="dot" style="background:#a78bfa"></span>Monte Carlo</div>
+            <div class="tool-pill"><span class="dot" style="background:#a78bfa"></span>dbt Tests</div>
+            <div class="tool-pill"><span class="dot" style="background:#a78bfa"></span>Pandera</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ══════════════════════ SALÁRIOS ══════════════════════ -->
+  <div class="phase">
+    <div class="section-label">
+      <span class="section-num">R$</span>
+      <h2 class="section-title" style="color:#a78bfa">Faixa Salarial no Brasil (2025–2026)</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="card-grid">
+      <div style="grid-column:1/-1">
+        <div class="salary-grid">
+          <div class="salary-card">
+            <div class="salary-role">ESTÁGIO / TRAINEE</div>
+            <div class="salary-value">R$1,5–3k</div>
+            <div class="salary-unit">mensal · 0–1 ano</div>
+            <div class="salary-intl">~$300–600 USD</div>
+          </div>
+          <div class="salary-card">
+            <div class="salary-role">JÚNIOR</div>
+            <div class="salary-value">R$4–8k</div>
+            <div class="salary-unit">mensal · 1–2 anos</div>
+            <div class="salary-intl">~$800–1.6k USD</div>
+          </div>
+          <div class="salary-card">
+            <div class="salary-role">PLENO</div>
+            <div class="salary-value">R$8–15k</div>
+            <div class="salary-unit">mensal · 2–5 anos</div>
+            <div class="salary-intl">~$1.5–3k USD</div>
+          </div>
+          <div class="salary-card">
+            <div class="salary-role">SÊNIOR</div>
+            <div class="salary-value">R$15–28k</div>
+            <div class="salary-unit">mensal · 5+ anos</div>
+            <div class="salary-intl">~$3–6k USD</div>
+          </div>
+          <div class="salary-card">
+            <div class="salary-role">ESPECIALISTA / STAFF</div>
+            <div class="salary-value">R$25–50k</div>
+            <div class="salary-unit">mensal · referência técnica</div>
+            <div class="salary-intl">~$5–10k USD</div>
+          </div>
+          <div class="salary-card">
+            <div class="salary-role">REMOTO INTERNACIONAL</div>
+            <div class="salary-value">$5–20k</div>
+            <div class="salary-unit">USD/mês · pleno–sênior</div>
+            <div class="salary-intl" style="color:#ffd93d">🌎 Meta, Google, startups EUA</div>
+          </div>
+        </div>
+        <div class="alert-box" style="margin-top:14px">
+          <strong>Nota 2025:</strong> Profissionais com experiência sólida em <strong>LLMs/IA generativa + engenharia de dados</strong> estão sendo disputados com salários 30–50% acima da média. Analytics Engineers com dbt avançado e ML Engineers têm as maiores valorizações no momento.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ══════════════════════ ROADMAP RECOMENDADO ══════════════════════ -->
+  <div class="phase">
+    <div class="section-label">
+      <span class="section-num">→</span>
+      <h2 class="section-title" style="color:#00e5b0">Ordem de Estudo Recomendada — 12 a 18 meses</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="card-grid">
+      <div class="big-card">
+        <div class="roadmap">
+
+          <div class="roadmap-step">
+            <div class="step-dot" style="background:rgba(0,229,176,0.12);color:#00e5b0;border:1px solid rgba(0,229,176,0.25)">01</div>
+            <div class="step-content">
+              <div class="step-title" style="color:#00e5b0">Meses 1–2: Fundamentos sólidos</div>
+              <div class="step-desc">Não pule essa etapa. Estude probabilidade, álgebra linear básica e lógica. Aprenda Python do zero (listas, funções, OOP básico) e SQL intermediário (JOINs, GROUP BY, subqueries). Configure Jupyter, VS Code e Git desde o primeiro dia — são hábitos profissionais.</div>
+              <div class="step-skills">
+                <span class="step-skill">Python básico</span>
+                <span class="step-skill">SQL intermediário</span>
+                <span class="step-skill">Probabilidade</span>
+                <span class="step-skill">Git / GitHub</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="roadmap-step">
+            <div class="step-dot" style="background:rgba(124,111,255,0.12);color:#a78bfa;border:1px solid rgba(124,111,255,0.25)">02</div>
+            <div class="step-content">
+              <div class="step-title" style="color:#a78bfa">Meses 3–4: Manipulação e qualidade de dados</div>
+              <div class="step-desc">Pandas e NumPy a fundo: limpeza, transformação, merge, group by. SQL avançado com window functions e CTEs. EDA completo com visualizações (Matplotlib, Seaborn, Plotly). Aqui você aprende a fazer as perguntas certas sobre os dados — a habilidade mais subestimada.</div>
+              <div class="step-skills">
+                <span class="step-skill">Pandas / NumPy</span>
+                <span class="step-skill">SQL avançado</span>
+                <span class="step-skill">EDA</span>
+                <span class="step-skill">Qualidade de dados</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="roadmap-step">
+            <div class="step-dot" style="background:rgba(255,95,95,0.12);color:#ff8080;border:1px solid rgba(255,95,95,0.25)">03</div>
+            <div class="step-content">
+              <div class="step-title" style="color:#ff8080">Meses 5–6: Estatística e visualização para negócio</div>
+              <div class="step-desc">Estatística descritiva e inferencial na prática. Testes de hipótese, A/B testing, intervalos de confiança. Power BI ou Tableau — crie dashboards reais com dados públicos. Comece a praticar storytelling: comunicar insights é tão importante quanto encontrá-los.</div>
+              <div class="step-skills">
+                <span class="step-skill">Estatística inferencial</span>
+                <span class="step-skill">A/B Testing</span>
+                <span class="step-skill">Power BI ou Tableau</span>
+                <span class="step-skill">Storytelling</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="roadmap-step">
+            <div class="step-dot" style="background:rgba(255,200,50,0.12);color:#ffd966;border:1px solid rgba(255,200,50,0.25)">04</div>
+            <div class="step-content">
+              <div class="step-title" style="color:#ffd966">Meses 7–9: Machine Learning clássico</div>
+              <div class="step-desc">Scikit-learn completo: regressão, classificação, clustering. XGBoost e LightGBM (os mais usados na prática). Feature engineering, cross-validation, métricas de avaliação e SHAP para explicabilidade. Projetos no Kaggle são essenciais para praticar com dados reais e comprar com outros.</div>
+              <div class="step-skills">
+                <span class="step-skill">Scikit-learn</span>
+                <span class="step-skill">XGBoost / LightGBM</span>
+                <span class="step-skill">Feature Engineering</span>
+                <span class="step-skill">Kaggle</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="roadmap-step">
+            <div class="step-dot" style="background:rgba(61,214,204,0.12);color:#3dd6cc;border:1px solid rgba(61,214,204,0.25)">05</div>
+            <div class="step-content">
+              <div class="step-title" style="color:#3dd6cc">Meses 10–12: Cloud, engenharia e dbt</div>
+              <div class="step-desc">Fundamentos de cloud (AWS ou GCP): S3, BigQuery ou Redshift. Aprenda dbt para transformações SQL no data warehouse. Airflow ou Dagster para orquestração de pipelines. Entenda como dados fluem em produção — isso é o que separa analistas de analistas de dados sérios.</div>
+              <div class="step-skills">
+                <span class="step-skill">GCP ou AWS</span>
+                <span class="step-skill">dbt</span>
+                <span class="step-skill">Airflow / Dagster</span>
+                <span class="step-skill">Data Warehousing</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="roadmap-step">
+            <div class="step-dot" style="background:rgba(124,111,255,0.12);color:#a78bfa;border:1px solid rgba(124,111,255,0.25)">06</div>
+            <div class="step-content">
+              <div class="step-title" style="color:#a78bfa">Meses 13–15: LLMs e IA generativa aplicada</div>
+              <div class="step-desc">Em 2025, ignorar LLMs é um erro de carreira. Aprenda a usar APIs (OpenAI, Anthropic, Google), RAG para busca semântica em dados internos, LangChain e LlamaIndex. Construa um projeto real com LLM — um chatbot sobre dados da empresa ou um sistema de relatórios automáticos.</div>
+              <div class="step-skills">
+                <span class="step-skill">OpenAI / Anthropic API</span>
+                <span class="step-skill">RAG</span>
+                <span class="step-skill">LangChain</span>
+                <span class="step-skill">Vector DBs</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="roadmap-step">
+            <div class="step-dot" style="background:rgba(251,125,181,0.12);color:#fb7db5;border:1px solid rgba(251,125,181,0.25)">07</div>
+            <div class="step-content">
+              <div class="step-title" style="color:#fb7db5">Ano 2+: Especialização, portfólio e sênior</div>
+              <div class="step-desc">Escolha sua trilha (Data Scientist, Analytics Engineer, ML Engineer, Data Engineer). Deep Learning, MLOps, arquiteturas avançadas de dados. Construa portfólio sólido com projetos reais, contribua com open source, escreva sobre o que aprendeu. Networking e visibilidade são tão importantes quanto a técnica neste nível.</div>
+              <div class="step-skills">
+                <span class="step-skill">Deep Learning</span>
+                <span class="step-skill">MLOps</span>
+                <span class="step-skill">Portfólio público</span>
+                <span class="step-skill">Especialização escolhida</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>Atualizado com <span>♥</span> para 2025–2026 · <span>Roadmap Análise de Dados</span></p>
+    <p style="margin-top:8px;font-size:10px;opacity:0.4;letter-spacing:0.5px">O campo evolui rápido — este documento reflete as demandas reais do mercado de dados hoje. Mantenha-se curioso.</p>
+  </footer>
+
+</div>
+</body>
+</html>
