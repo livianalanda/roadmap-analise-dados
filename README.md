@@ -1,7 +1,8 @@
 # ✨ Data Analytics Roadmap
 
-🔗 **Acesse o projeto online:**  
-https://roadmap-analise-dados.netlify.app
+## 🌐 Live Demo
+
+👉 [Clique aqui para acessar o projeto](https://roadmap-analise-dados.netlify.app)
 
 Roadmap interativo criado para organizar estudos em Análise de Dados de forma visual, estratégica e intuitiva.
 
